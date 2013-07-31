@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Major Version</key><integer>1</integer>
+	<key>Minor Version</key><integer>1</integer>
+	<key>Date</key><date>2013-07-16T12:31:15Z</date>
+	<key>Application Version</key><string>10.7</string>
+	<key>Features</key><integer>5</integer>
+	<key>Show Content Ratings</key><true/>
+	<key>Music Folder</key><string>file://localhost/Users/wizardman/Music/iTunes/iTunes%20Media/</string>
+	<key>Library Persistent ID</key><string>95F108CA2B9364BF</string>
+	<key>Tracks</key>
+	<dict>
+		<key>3456</key>
+		<dict_FOCUS>
+			<key_first>Track ID</key_first><integer>3456</integer>
+			<key>Name</key><string>No Place To Go</string>
+			<key>Artist</key><string>1st Down</string>
+			<key>Album</key><string>J Dilla - Legacy Vol.1</string>
+			<key>Genre</key><string>Hip-Hop</string>
+			<key>Kind</key><string>Fichier audio MPEG</string>
+			<key>Size</key><integer>4409344</integer>
+			<key>Total Time</key><integer>183666</integer>
+			<key>Track Number</key><integer>40</integer>
+			<key>Year</key><integer>2006</integer>
+			<key>Date Modified</key><date>2010-06-25T16:49:08Z</date>
+			<key>Date Added</key><date>2010-11-03T21:01:56Z</date>
+			<key>Bit Rate</key><integer>192</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Comments</key><string>FEFE2003</string>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2012-12-14T14:31:18Z</date>
+			<key>Persistent ID</key><string>BE4ED29CCB7ED086</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file://localhost/Users/wizardman/Music/iTunes/iTunes%20Media/Music/1st%20Down/J%20Dilla%20-%20Legacy%20Vol.1/40%20No%20Place%20To%20Go.mp3</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key_last>Library Folder Count</key_last><integer>1</integer>
+		</dict_FOCUS>
+		<key>3457</key>
+		<dict_FOCUS2>
+			<key_first2>Track ID</key_first2><integer>3456</integer>
+			<key>Name</key><string>No Place To Go</string>
+			<key>Artist</key><string>1st Down</string>
+			<key>Album</key><string>J Dilla - Legacy Vol.2</string>
+			<key>Genre</key><string>Hip-Hop</string>
+			<key>Kind</key><string>Fichier audio MPEG</string>
+			<key>Size</key><integer>4409344</integer>
+			<key>Total Time</key><integer>183666</integer>
+			<key>Track Number</key><integer>40</integer>
+			<key>Year</key><integer>2006</integer>
+			<key>Date Modified</key><date>2010-06-25T16:49:08Z</date>
+			<key>Date Added</key><date>2010-11-03T21:01:56Z</date>
+			<key>Bit Rate</key><integer>192</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Comments</key><string>FEFE2003</string>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2012-12-14T14:31:18Z</date>
+			<key>Persistent ID</key><string>BE4ED29CCB7ED086</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file://localhost/Users/wizardman/Music/iTunes/iTunes%20Media/Music/1st%20Down/J%20Dilla%20-%20Legacy%20Vol.1/40%20No%20Place%20To%20Go.mp3</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key_last2>Library Folder Count</key_last2><integer>1</integer>
+		</dict_FOCUS2>
+	</dict>
+</dict>
+</plist>
