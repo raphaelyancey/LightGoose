@@ -13,8 +13,8 @@
 	<key>Tracks</key>
 	<dict>
 		<key>3456</key>
-		<dict_FOCUS>
-			<key_first>Track ID</key_first><integer>3456</integer>
+		<dict>
+			<key>Track ID</key><integer>3456</integer>
 			<key>Name</key><string>No Place To Go</string>
 			<key>Artist</key><string>1st Down</string>
 			<key>Album</key><string>J Dilla - Legacy Vol.1</string>
@@ -35,13 +35,13 @@
 			<key>Track Type</key><string>File</string>
 			<key>Location</key><string>file://localhost/Users/wizardman/Music/iTunes/iTunes%20Media/Music/1st%20Down/J%20Dilla%20-%20Legacy%20Vol.1/40%20No%20Place%20To%20Go.mp3</string>
 			<key>File Folder Count</key><integer>5</integer>
-			<key_last>Library Folder Count</key_last><integer>1</integer>
-		</dict_FOCUS>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
 		<key>3457</key>
-		<dict_FOCUS2>
-			<key_first2>Track ID</key_first2><integer>3456</integer>
-			<key>Name</key><string>No Place To Go</string>
-			<key>Artist</key><string>1st Down</string>
+		<dict>
+			<key>Track ID</key><integer>3442</integer>
+			<key>Name</key><string>One Place To Go</string>
+			<key>Artist</key><string>2st Down</string>
 			<key>Album</key><string>J Dilla - Legacy Vol.2</string>
 			<key>Genre</key><string>Hip-Hop</string>
 			<key>Kind</key><string>Fichier audio MPEG</string>
@@ -60,8 +60,8 @@
 			<key>Track Type</key><string>File</string>
 			<key>Location</key><string>file://localhost/Users/wizardman/Music/iTunes/iTunes%20Media/Music/1st%20Down/J%20Dilla%20-%20Legacy%20Vol.1/40%20No%20Place%20To%20Go.mp3</string>
 			<key>File Folder Count</key><integer>5</integer>
-			<key_last2>Library Folder Count</key_last2><integer>1</integer>
-		</dict_FOCUS2>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
 	</dict>
 </dict>
 </plist>

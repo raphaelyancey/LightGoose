@@ -28,47 +28,63 @@ int main() {
 	cout << endl << "Album list" << endl;
 	cout << "------------------------------------" << endl;
 
-	QVector<QString> albums(0);
-
+	// Get the children nodes of the first dict
 	QDomNodeList list = n.childNodes();
 	int count = list.count();
 
-	for(int i = 0; i <= count; ++i)
-	{
-		QDomElement node = list.at(i).toElement();
+	// Init the albums storage
+	QVector<QVector<QString> > albums(0);
+	int albumIterator(0);
 
+	// And the keys we want
+	QVector<QString> keys(0);
+	keys.append("Album");
+	keys.append("Track ID");
+	keys.append("Name");
+
+	// For each child
+	for(int nodeIterator = 0; nodeIterator <= count; nodeIterator++)
+	{
+		QDomElement node = list.at(nodeIterator).toElement();
+
+		// If it is a <dict>
 		if(node.tagName().startsWith("dict"))
 		{
 			node = node.firstChildElement();
 
+			// We go through its children
 			while(!node.isNull())
 			{
-				QVector<QVector<QString> > = albums(0);
-
+				// Get the key tag
 				if(node.tagName() == "key")
 				{
-					switch(node.text())
-					case "Track ID":
+					// For each tag we want to store
+					for(int keyIterator = 0; keyIterator < keys.count(); keyIterator++)
+					{
+						// We check if the current tag is one of them
+						if(node.text() == keys.at(keyIterator) && node.tagName() == "key")
+						{
+							// The value is stored in the next element
+							node = node.nextSiblingElement();
 
-						break;
+							if(!node.isNull())
+							{
+								albums.resize(albumIterator+1);
+
+								QString value = node.text();
+
+								if(albums[albumIterator].indexOf(value) == -1)
+									albums[albumIterator].append(value);
+							}
+						}
 					}
 				}
 
-				/*if(node.text() == "Album" && node.tagName() == "key")
-				{
-					node = node.nextSiblingElement();
-
-					if(!node.isNull() && node.tagName() == "string")
-					{
-						QString album = node.text();
-
-						if(albums.indexOf(album) == -1)
-							albums.append(album);
-					}
-				}*/
-
 				node = node.nextSiblingElement();
 			}
+
+			albumIterator = albumIterator+1;
+
 		}
 	}
 
