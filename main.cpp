@@ -90,12 +90,19 @@ int main(int argc, char *argv[]) {
 						}
 					}
 				}
-				//qAlbumList->addItem(albums[i][2]);
 			}
+		}
+
+
+		for(int i = 0; i < uniqueAlbumsList.count(); i++)
+		{
+			qAlbumList->addItem(uniqueAlbumsList[i]);
 		}
 
 		qDebug() << "Unique albums" << endl << "---------" << uniqueAlbums << endl;
 		qDebug() << "Unique albums list" << endl << "---------" << uniqueAlbumsList << endl;
+
+
 
 	} else {
 		cerr << "Aucun album." << endl;
