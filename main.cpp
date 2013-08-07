@@ -26,7 +26,6 @@ int main(int argc, char *argv[]) {
 	keys.append("Artist");
 	keys.append("Track ID");
 	keys.append("Album");
-	keys.append("Name");
 
 	// we store the keys position to use (in the case we change the keys later)
 	int keyOfAlbum = keys.indexOf("Album");
@@ -68,18 +67,28 @@ int main(int argc, char *argv[]) {
 					// we store the album name in the list of uniques
 					uniqueAlbumsList.append(albums[i][keyOfAlbum]);
 
-//					// and the album name and first track in the uniques vector
-//					uniqueAlbums.resize(uniqueAlbumIterator+1);
-//					uniqueAlbums[uniqueAlbumIterator].append(albums[i][keyOfAlbum]);
-//					uniqueAlbumIterator++;
-
-					qDebug() << albums[i][keyOfAlbum] << "didn't exist, creating it.";
+					// and the album name and first track in the uniques vector
+					uniqueAlbums.resize(uniqueAlbumIterator+1);
+					qDebug() << "[-] Taille de uniqueAlbums : " << uniqueAlbums.count();
+					uniqueAlbums[uniqueAlbumIterator].append(albums[i][keyOfAlbum]);
+					uniqueAlbums[uniqueAlbumIterator].append(albums[i][keyOfTrackId]);
+					uniqueAlbumIterator++;
+					qDebug() << "    " << albums[i][keyOfAlbum] << "didn't exist, creating it.";
 				}
 				else // and if it does
 				{
-					// we store the track id fetched
-//					uniqueAlbums[uniqueAlbumIterator].append(albums[i][keyOfTrackId]);
-					qDebug() << albums[i][keyOfAlbum] << "exists, just adding track " << albums[i][keyOfTrackId] << ".";
+					qDebug() << "[+] " << uniqueAlbumsList.indexOf(albums[i][keyOfAlbum]) << " trouvé dans la liste des albums uniques";
+
+					// we store the track id fetched in the right row of uniqueAlbums
+
+					for(int k = 0; k < uniqueAlbums.count(); k++)
+					{
+						if(uniqueAlbums[k][0] == albums[i][keyOfAlbum])
+						{
+							uniqueAlbums[k].append(albums[i][keyOfTrackId]);
+							qDebug() << albums[i][keyOfAlbum] << "exists, just adding track " << albums[i][keyOfTrackId] << ".";
+						}
+					}
 				}
 				//qAlbumList->addItem(albums[i][2]);
 			}
