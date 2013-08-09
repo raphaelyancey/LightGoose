@@ -8,6 +8,7 @@
 #include <QApplication>
 #include <QLayout>
 #include <itunes.h>
+#include <window.h>
 
 using namespace std;
 
@@ -15,9 +16,7 @@ int main(int argc, char *argv[]) {
 
 	// initializing the Qt window
 	QApplication a(argc, argv);
-	QWidget w;
-	QHBoxLayout *layout = new QHBoxLayout;
-	w.setFixedSize(400, 100);
+	Window *w = new Window;
 
 	QVector<QList<QString> > albums; // where the albums will be stored
 	QVector<QString> keys(0); // the iTunes XML keys we want to fetch
@@ -46,10 +45,6 @@ int main(int argc, char *argv[]) {
 	}
 
 	qDebug() << albums << endl;
-
-	// setting up the widgets
-	QComboBox *qAlbumList = new QComboBox;
-	QPushButton *qPlay = new QPushButton("Play");
 
 	// adding the albums to the combobox
 	if(albums.count() != 0)
@@ -94,10 +89,9 @@ int main(int argc, char *argv[]) {
 		}
 
 
-		for(int i = 0; i < uniqueAlbumsList.count(); i++)
-		{
-			qAlbumList->addItem(uniqueAlbumsList[i]);
-		}
+		// Adding items to the list
+		QVector<QString>* pUniqueAlbumList = &uniqueAlbumsList;
+		w->albumList(*pUniqueAlbumList);
 
 		qDebug() << "Unique albums" << endl << "---------" << uniqueAlbums << endl;
 		qDebug() << "Unique albums list" << endl << "---------" << uniqueAlbumsList << endl;
@@ -109,10 +103,7 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
-	layout->addWidget(qAlbumList);
-	layout->addWidget(qPlay);
-
-	w.setLayout(layout);
-	w.show();
+	w->setFields();
+	w->show();
 	return a.exec();
 }
