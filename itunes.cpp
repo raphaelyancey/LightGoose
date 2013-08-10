@@ -6,7 +6,14 @@
 #include <QtDebug>
 #include <iostream>
 
-QVector<QList<QString> > iTunes::getAlbums(QString filePath, QVector<QString> keys)
+iTunes::iTunes()
+{
+	keys.append("Artist");
+	keys.append("Track ID");
+	keys.append("Album");
+}
+
+QVector<QList<QString> > iTunes::getAlbums(QString filePath)
 {
 	QDomDocument doc("Lib");
 	QFile file(filePath);
@@ -81,12 +88,15 @@ QVector<QList<QString> > iTunes::getAlbums(QString filePath, QVector<QString> ke
 	return albums;
 }
 
-QVector<QString> iTunes::getUniqueAlbumList(QVector<QList<QString> > albums, QVector<QString> keys)
+QVector<QString> iTunes::getUniqueAlbumList(QVector<QList<QString> > albums)
 {
 	keyOfAlbum = keys.indexOf("Album");
 	keyOfTrackId = keys.indexOf("Track ID");
 	keyOfArtist = keys.indexOf("Artist");
 	uniqueAlbumIterator = 0;
+
+	for(int i=0;i<keys.count();i++)
+		qDebug() << "Position de " << keys.at(i) << " : " << keys.indexOf(keys.at(i));
 
 	for(int i = 0; i < albums.count(); i++)
 	{
@@ -107,7 +117,7 @@ QVector<QString> iTunes::getUniqueAlbumList(QVector<QList<QString> > albums, QVe
 			}
 			else // and if it does
 			{
-				qDebug() << "[+] " << uniqueAlbumList.indexOf(albums[i][keyOfAlbum]) << " trouvé dans la liste des albums uniques";
+				qDebug() << "[+] " << albums[i][keyOfAlbum] << " trouvé dans la liste des albums uniques";
 
 				// we store the track id fetched in the right row of uniqueAlbums
 
@@ -124,4 +134,9 @@ QVector<QString> iTunes::getUniqueAlbumList(QVector<QList<QString> > albums, QVe
 	}
 
 	return uniqueAlbumList;
+}
+
+void iTunes::playAlbum(int uniqueAlbumIndex)
+{
+	qDebug() << "Lancement de l'album " << uniqueAlbumIndex;
 }

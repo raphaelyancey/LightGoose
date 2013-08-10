@@ -1,4 +1,5 @@
 #include "window.h"
+#include "itunes.h"
 
 Window::Window() : QWidget()
 {
@@ -16,10 +17,23 @@ void Window::createAlbumList(QVector<QString> albums)
 
 void Window::setFields()
 {
-	QObject::connect(qPlay, SIGNAL(clicked()), qApp, SLOT(quit()));
+	QObject::connect(qList, SIGNAL(currentIndexChanged(int)), this, SLOT(getAlbumByIndex(int)));
+	QObject::connect(qPlay, SIGNAL(clicked()), this, SLOT(qPlayAlbum()));
 
 	qLayout->addWidget(qList);
 	qLayout->addWidget(qPlay);
 
 	setLayout(qLayout);
+}
+
+void Window::getAlbumByIndex(int index)
+{
+	selectedAlbum = index;
+	qDebug() << selectedAlbum;
+}
+
+void Window::qPlayAlbum()
+{
+	iTunes *i = new iTunes;
+	i->playAlbum(selectedAlbum);
 }
