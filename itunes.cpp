@@ -80,3 +80,48 @@ QVector<QList<QString> > iTunes::getAlbums(QString filePath, QVector<QString> ke
 
 	return albums;
 }
+
+QVector<QString> iTunes::getUniqueAlbumList(QVector<QList<QString> > albums, QVector<QString> keys)
+{
+	keyOfAlbum = keys.indexOf("Album");
+	keyOfTrackId = keys.indexOf("Track ID");
+	keyOfArtist = keys.indexOf("Artist");
+	uniqueAlbumIterator = 0;
+
+	for(int i = 0; i < albums.count(); i++)
+	{
+		if(albums[i].count() == 3) // only fetching complete rows
+		{
+			if(uniqueAlbumList.indexOf(albums[i][keyOfAlbum]) == -1) // if the record doesn't exists in the uniques vector
+			{
+				// we store the album name in the list of uniques
+				uniqueAlbumList.append(albums[i][keyOfAlbum]);
+
+				// and the album name and first track in the uniques vector
+				uniqueAlbums.resize(uniqueAlbumIterator+1);
+				qDebug() << "[-] Taille de uniqueAlbums : " << uniqueAlbums.count();
+				uniqueAlbums[uniqueAlbumIterator].append(albums[i][keyOfAlbum]);
+				uniqueAlbums[uniqueAlbumIterator].append(albums[i][keyOfTrackId]);
+				uniqueAlbumIterator++;
+				qDebug() << "    " << albums[i][keyOfAlbum] << "didn't exist, creating it.";
+			}
+			else // and if it does
+			{
+				qDebug() << "[+] " << uniqueAlbumList.indexOf(albums[i][keyOfAlbum]) << " trouvé dans la liste des albums uniques";
+
+				// we store the track id fetched in the right row of uniqueAlbums
+
+				for(int k = 0; k < uniqueAlbums.count(); k++)
+				{
+					if(uniqueAlbums[k][0] == albums[i][keyOfAlbum])
+					{
+						uniqueAlbums[k].append(albums[i][keyOfTrackId]);
+						qDebug() << albums[i][keyOfAlbum] << "exists, just adding track " << albums[i][keyOfTrackId] << ".";
+					}
+				}
+			}
+		}
+	}
+
+	return uniqueAlbumList;
+}

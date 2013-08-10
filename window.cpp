@@ -8,7 +8,7 @@ Window::Window() : QWidget()
 	qPlay = new QPushButton("Play");
 }
 
-void Window::albumList(QVector<QString> albums)
+void Window::createAlbumList(QVector<QString> albums)
 {
 	for(int i = 0; i < albums.count(); i++)
 		qList->addItem(albums[i]);
@@ -16,6 +16,8 @@ void Window::albumList(QVector<QString> albums)
 
 void Window::setFields()
 {
+	QObject::connect(qPlay, SIGNAL(clicked()), qApp, SLOT(quit()));
+
 	qLayout->addWidget(qList);
 	qLayout->addWidget(qPlay);
 

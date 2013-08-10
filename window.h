@@ -11,9 +11,12 @@
 
 class Window : public QWidget
 {
+
+Q_OBJECT
+
 public:
 	Window();
-	void albumList(QVector<QString> albums);
+	void createAlbumList(QVector<QString> albums);
 	void setFields();
 private:
 	QComboBox *qList;
