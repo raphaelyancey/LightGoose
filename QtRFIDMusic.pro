@@ -1,8 +1,11 @@
 SOURCES += \
-    main.cpp
+    main.cpp \
+    itunes.cpp \
+    window.cpp
 
 QT += xml
 QT += widgets
 
 HEADERS += \
-    XMLParser.h
+    itunes.h \
+    window.h

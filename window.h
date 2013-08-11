@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QList>
+#include <QVector>
+#include <QString>
 #include <QDebug>
 #include <itunes.h>
 
@@ -19,7 +21,9 @@ public:
 	Window();
 	void createAlbumList(QVector<QString> albums);
 	void setFields();
+	void ssConnect();
 	int selectedAlbum;
+	QVector<QString> uniqueAlbumList;
 private:
 	QComboBox *qList;
 	QPushButton *qPlay;

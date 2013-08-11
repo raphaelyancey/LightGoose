@@ -5,12 +5,16 @@
 #include <QtXml>
 #include <QtDebug>
 #include <iostream>
+#include <sstream>
+#include <QProcess>
 
 iTunes::iTunes()
 {
 	keys.append("Artist");
 	keys.append("Track ID");
 	keys.append("Album");
+
+	playCommand = "osascript";
 }
 
 QVector<QList<QString> > iTunes::getAlbums(QString filePath)
@@ -85,6 +89,9 @@ QVector<QList<QString> > iTunes::getAlbums(QString filePath)
 		}
 	}
 
+	if(albums.isEmpty())
+		throw QString("Aucun album retourné.");
+
 	return albums;
 }
 
@@ -136,7 +143,16 @@ QVector<QString> iTunes::getUniqueAlbumList(QVector<QList<QString> > albums)
 	return uniqueAlbumList;
 }
 
-void iTunes::playAlbum(int uniqueAlbumIndex)
+void iTunes::playAlbum(int uniqueAlbumIndex, QVector<QString> uniqueAlbumListCopy)
 {
-	qDebug() << "Lancement de l'album " << uniqueAlbumIndex;
+	qDebug() << "Lancement de l'album n°" << uniqueAlbumIndex;
+	qDebug() << "Nom : " << uniqueAlbumListCopy.at(uniqueAlbumIndex);
+
+	QProcess *p = new QProcess;
+	QString program = "/usr/bin/osascript";
+	QStringList args;
+	args << "/Users/wizardman/QtRFIDMusic/AppleScripts/random.scpt";
+	args << uniqueAlbumListCopy.at(uniqueAlbumIndex);
+	p->start(program, args);
+
 }

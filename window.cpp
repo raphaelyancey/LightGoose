@@ -15,11 +15,14 @@ void Window::createAlbumList(QVector<QString> albums)
 		qList->addItem(albums[i]);
 }
 
-void Window::setFields()
+void Window::ssConnect()
 {
 	QObject::connect(qList, SIGNAL(currentIndexChanged(int)), this, SLOT(getAlbumByIndex(int)));
 	QObject::connect(qPlay, SIGNAL(clicked()), this, SLOT(qPlayAlbum()));
+}
 
+void Window::setFields()
+{
 	qLayout->addWidget(qList);
 	qLayout->addWidget(qPlay);
 
@@ -35,5 +38,5 @@ void Window::getAlbumByIndex(int index)
 void Window::qPlayAlbum()
 {
 	iTunes *i = new iTunes;
-	i->playAlbum(selectedAlbum);
+	i->playAlbum(selectedAlbum, uniqueAlbumList);
 }

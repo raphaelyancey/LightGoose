@@ -34,7 +34,15 @@ int main(int argc, char *argv[]) {
 		QVector<QString> uniqueAlbumList; // the list of these albums
 
 		// Get the unique album list
-		uniqueAlbumList = i->getUniqueAlbumList(albums);
+		try {
+			uniqueAlbumList = i->getUniqueAlbumList(albums);
+			w->uniqueAlbumList = uniqueAlbumList;
+		}
+		catch(QString const& str) {
+			cerr << qPrintable(str) << endl;
+			return 1;
+		}
+
 		// Adding items to the list
 		w->createAlbumList(uniqueAlbumList);
 
@@ -43,6 +51,7 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
+	w->ssConnect();
 	w->setFields();
 	w->show();
 	return a.exec();
