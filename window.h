@@ -18,23 +18,24 @@ class Window : public QWidget
 Q_OBJECT
 
 public:
-	Window();
-	void createAlbumList(QVector<QString> albums);
-	void setFields();
-	void ssConnect();
+	Window(iTunes *instance);
+	void createAlbumList();
+	void setUi();
+	void setLinks();
 	int selectedAlbum;
-	QVector<QString> uniqueAlbumList;
 private:
 	QComboBox *qList;
 	QPushButton *qPlay;
 	QHBoxLayout *qLayout;
+	QPushButton *qRefresh;
+	iTunes *i;
 
 signals:
 	
 public slots:
 	void getAlbumByIndex(int index);
 	void qPlayAlbum();
-	
+	void refreshList();
 };
 
 #endif // WINDOW_H

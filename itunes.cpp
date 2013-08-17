@@ -8,16 +8,18 @@
 #include <sstream>
 #include <QProcess>
 
-iTunes::iTunes()
+iTunes::iTunes(QString path)
 {
 	keys.append("Artist");
 	keys.append("Track ID");
 	keys.append("Album");
 
 	playCommand = "osascript";
+
+	filePath = path;
 }
 
-QVector<QList<QString> > iTunes::getAlbums(QString filePath)
+QVector<QList<QString> > iTunes::getAlbums()
 {
 	QDomDocument doc("Lib");
 	QFile file(filePath);
@@ -151,7 +153,7 @@ void iTunes::playAlbum(int uniqueAlbumIndex, QVector<QString> uniqueAlbumListCop
 	QProcess *p = new QProcess;
 	QString program = "/usr/bin/osascript";
 	QStringList args;
-	args << "/Users/wizardman/QtRFIDMusic/AppleScripts/random.scpt";
+	args << "/Users/wizardman/QtRFIDMusic/playAlbum.scpt";
 	args << uniqueAlbumListCopy.at(uniqueAlbumIndex);
 	p->start(program, args);
 

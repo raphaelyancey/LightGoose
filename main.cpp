@@ -12,14 +12,14 @@ int main(int argc, char *argv[]) {
 
 	// initializing the Qt window
 	QApplication a(argc, argv);
-	Window *w = new Window;
+	iTunes *i = new iTunes("/Users/wizardman/QtRFIDMusic/Lib.xml");
+	Window *w = new Window(i); // passing the iTunes instance
 
 	QVector<QList<QString> > albums; // where the albums will be stored
-	iTunes *i = new iTunes;
 
 	// getting the albums
 	try {
-		albums = i->getAlbums("/Users/wizardman/QtRFIDMusic/Lib.xml");
+		albums = i->getAlbums();
 	}
 	catch(QString const& str) {
 		cerr << qPrintable(str) << endl;
@@ -36,7 +36,6 @@ int main(int argc, char *argv[]) {
 		// Get the unique album list
 		try {
 			uniqueAlbumList = i->getUniqueAlbumList(albums);
-			w->uniqueAlbumList = uniqueAlbumList;
 		}
 		catch(QString const& str) {
 			cerr << qPrintable(str) << endl;
@@ -44,15 +43,15 @@ int main(int argc, char *argv[]) {
 		}
 
 		// Adding items to the list
-		w->createAlbumList(uniqueAlbumList);
+		w->createAlbumList();
 
 	} else {
 		cerr << "Can't find any album." << endl;
 		return 1;
 	}
 
-	w->ssConnect();
-	w->setFields();
+	w->setLinks();
+	w->setUi();
 	w->show();
 	return a.exec();
 }
