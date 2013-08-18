@@ -5,9 +5,12 @@ Window::Window(iTunes *instance) : QWidget()
 {
 	setFixedSize(400, 100);
 	qLayout = new QHBoxLayout;
-	qList = new QComboBox;
+
+	qList = new QComboBox; qList->setEditable(true);
 	qPlay = new QPushButton("Play");
 	qRefresh = new QPushButton("Refresh");
+	qProgress = new QProgressBar; qProgress->hide();
+
 	i = instance;
 }
 
@@ -29,6 +32,7 @@ void Window::setUi() // adding the UI elements
 {
 	qLayout->addWidget(qRefresh);
 	qLayout->addWidget(qList);
+	qLayout->addWidget(qProgress);
 	qLayout->addWidget(qPlay);
 
 	setLayout(qLayout);
@@ -47,16 +51,25 @@ void Window::qPlayAlbum()
 
 void Window::refreshList() {
 
+	qList->hide();
+	qProgress->show();
+	qProgress->setMaximum(0); qProgress->setMinimum(0);
+	qRefresh->setEnabled(false);
+	qPlay->setEnabled(false);
+
+	// clearing the previous lists
 	i->uniqueAlbumList.clear();
 	i->uniqueAlbums.clear();
 
-	QVector<QList<QString> > newAlbums = i->getAlbums();
-	qDebug() << "newAlbums : " << newAlbums;
-	QVector<QString> newList = i->getUniqueAlbumList(newAlbums);
-	qDebug() << "newList : " << newList;
-
+	// getting the new ones
+	QVector<QString> newList = i->getUniqueAlbumList(i->getAlbums());
 	i->uniqueAlbumList = newList;
 
 	qList->clear();
 	createAlbumList();
+
+	qProgress->hide();
+	qList->show();
+	qRefresh->setEnabled(true);
+	qPlay->setEnabled(true);
 }

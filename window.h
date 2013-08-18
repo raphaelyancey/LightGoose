@@ -10,6 +10,7 @@
 #include <QVector>
 #include <QString>
 #include <QDebug>
+#include <QProgressBar>
 #include <itunes.h>
 
 class Window : public QWidget
@@ -28,6 +29,7 @@ private:
 	QPushButton *qPlay;
 	QHBoxLayout *qLayout;
 	QPushButton *qRefresh;
+	QProgressBar *qProgress;
 	iTunes *i;
 
 signals:

@@ -89,6 +89,7 @@ QVector<QList<QString> > iTunes::getAlbums()
 			albumIterator = albumIterator+1;
 
 		}
+		QCoreApplication::processEvents();
 	}
 
 	if(albums.isEmpty())
